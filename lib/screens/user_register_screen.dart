@@ -21,61 +21,66 @@ class _UserRegisterScreenState extends State<UserRegisterScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Form(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                shrinkWrap: true,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Nome',
-                      icon: Icon(Icons.person),
-                    ),
-                    textInputAction: TextInputAction.next,
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Email',
-                      icon: Icon(Icons.email_rounded),
-                    ),
-                    textInputAction: TextInputAction.next,
-                  ),
-                  TextFormField(
-                    obscureText: passwordEnabled,
-                    decoration: InputDecoration(
-                      labelText: 'Senha',
-                      icon: const Icon(Icons.password),
-                      hintText: 'Insira uma senha forte',
-                      suffix: IconButton(
+        child: Center(
+          child: Padding(
+            padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
+            child: Column(
+              children: [
+                Text(
+                  'Crie sua conta aqui',
+                  style: TextStyle(fontSize: 24),
+                ),
+                SizedBox(height: 50),
+                Form(
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Nome',
+                          icon: Icon(Icons.person),
+                        ),
+                        textInputAction: TextInputAction.next,
+                      ),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                            labelText: 'Email',
+                            icon: Icon(Icons.email_rounded)),
+                        textInputAction: TextInputAction.next,
+                      ),
+                      TextFormField(
+                        decoration: InputDecoration(
+                          labelText: 'Senha',
+                          icon: Icon(Icons.password),
+                          suffix: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                passwordEnabled = !passwordEnabled;
+                              });
+                            },
+                            icon: Icon(passwordEnabled == true
+                                ? Icons.remove_red_eye
+                                : Icons.remove_red_eye_outlined),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 200),
+                      ElevatedButton(
                         onPressed: () {
                           setState(() {
-                            passwordEnabled = !passwordEnabled;
+                            HomeScreen.isLoggedIn = !HomeScreen.isLoggedIn;
                           });
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              AppRoutes.HOME, (route) => false);
                         },
-                        icon: Icon(passwordEnabled == true
-                            ? Icons.remove_red_eye
-                            : Icons.remove_red_eye_outlined),
+                        child: const Text("Cadastrar"),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: 100),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  HomeScreen.isLoggedIn = !HomeScreen.isLoggedIn;
-                });
-                Navigator.of(context)
-                    .pushNamedAndRemoveUntil(AppRoutes.HOME, (route) => false);
-              },
-              child: const Text('Cadastrar'),
-            )
-          ],
+          ),
         ),
       ),
     );

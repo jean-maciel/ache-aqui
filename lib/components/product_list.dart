@@ -52,7 +52,12 @@ class ProductList extends StatelessWidget {
                   ),
                   title: Text(pr.name),
                   subtitle: Text(pr.category),
-                  trailing: Text(pr.trackingCode),
+                  trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.info,
+                        color: Theme.of(context).colorScheme.secondary,
+                      )),
                 ),
               );
             });

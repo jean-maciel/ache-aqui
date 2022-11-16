@@ -27,6 +27,13 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
+                const SizedBox(height: 40),
+                const Text(
+                  'Login',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 24),
+                ),
+                const SizedBox(height: 70),
                 Form(
                   child: ListView(
                     shrinkWrap: true,
@@ -57,7 +64,7 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                         ),
                       ),
                       const SizedBox(
-                        height: 100,
+                        height: 200,
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -72,7 +79,8 @@ class _UserLoginScreenState extends State<UserLoginScreen> {
                     ],
                   ),
                 ),
-                TextButton(onPressed: () {}, child: Text('Esqueceu a senha?')),
+                TextButton(
+                    onPressed: () {}, child: const Text('Esqueceu a senha?')),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

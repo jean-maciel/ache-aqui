@@ -87,8 +87,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         currentAccountPicture: const CircleAvatar(
                           child: Text("JR"),
                         ),
-                        decoration:
-                            BoxDecoration(color: Theme.of(context).colorScheme.secondary),
+                        decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.secondary),
                       ),
                       ListTile(
                         leading: const Icon(Icons.exit_to_app),
